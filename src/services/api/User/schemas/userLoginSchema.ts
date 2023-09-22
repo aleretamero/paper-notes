@@ -1,11 +1,8 @@
 import { Schema, z } from 'zod';
 import { ReturnLoginUserDto } from '../dtos/ReturnLoginUserDto';
+import { userEntitySchema } from './userEntitySchema';
 
 export const userLoginSchema: Schema<ReturnLoginUserDto> = z.object({
-  user: z.object({
-    _id: z.string(),
-    name: z.string(),
-    email: z.string(),
-  }),
+  user: userEntitySchema,
   token: z.string(),
 });

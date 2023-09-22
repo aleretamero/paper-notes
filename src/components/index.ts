@@ -5,3 +5,5 @@ export { Header } from './Header';
 export { Image } from './Image';
 export { Input } from './Input';
 export { Title } from './Title';
+export { Sidebar } from './Sidebar';
+export { MenuEditing } from './MenuEditing';

@@ -4,15 +4,15 @@ import {
   useCallback,
   useEffect,
   useState,
-  useRef,
 } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { userService } from '../services/api/User/UsersService';
+import { UserService } from '../services/api/User/UsersService';
 import { RegisterUserDto } from '../services/api/User/dtos/RegisterUserDto';
 import { LoginUserDto } from '../services/api/User/dtos/LoginUserDto';
 import { UserEntity } from '../services/api/User/entity/UserEntity';
+import { TokenService } from '../services/api/Token/TokenService';
 
 interface IUserContext {
   userRegister: (body: RegisterUserDto) => Promise<void>;
@@ -22,7 +22,6 @@ interface IUserContext {
   error: null | string;
   loading: boolean;
   login: boolean;
-  token: string | null;
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -33,8 +32,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const token = useRef<string | null>(null);
-
   const navigate = useNavigate();
 
   const userRegister = async (body: RegisterUserDto): Promise<void> => {
@@ -42,7 +39,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
 
     try {
-      await userService.register(body);
+      await UserService.register(body);
 
       userLogin({ email: body.email, password: body.password });
     } catch (error) {
@@ -59,10 +56,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
 
     try {
-      const data = await userService.login(body);
+      const data = await UserService.login(body);
 
-      localStorage.setItem('@token-paper-notes', data.token);
-      token.current = data.token;
+      TokenService.save(data.token);
 
       setDataUser(data.user);
       setLogin(true);
@@ -84,41 +80,39 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setError(null);
     setLoading(false);
     setLogin(false);
-    token.current = null;
 
-    localStorage.removeItem('@token-paper-notes');
+    TokenService.remove();
   }, []);
 
-  const getUser = useCallback(
-    async (token: string) => {
-      setError(null);
-      setLoading(true);
+  const getUser = useCallback(async () => {
+    setError(null);
+    setLoading(true);
 
-      try {
-        const data = await userService.getUser(token);
+    try {
+      const data = await UserService.getUser();
 
-        setDataUser(data);
-        setLogin(true);
+      setDataUser(data);
+      setLogin(true);
 
-        navigate('/notes', { replace: true });
-      } catch (error) {
-        if (error instanceof Error && error.message) {
-          setError(error.message);
-        }
-        userLogout();
-      } finally {
-        setLoading(false);
+      navigate('/notes', { replace: true });
+    } catch (error) {
+      if (error instanceof Error && error.message) {
+        setError(error.message);
       }
-    },
-    [userLogout, navigate]
-  );
+      userLogout();
+    } finally {
+      setLoading(false);
+    }
+  }, [userLogout, navigate]);
 
   useEffect(() => {
     const autoLogin = async () => {
-      token.current = localStorage.getItem('@token-paper-notes');
+      const token = TokenService.get();
 
-      if (token.current) await getUser(token.current);
-      else userLogout();
+      if (token) {
+        TokenService.save(token);
+        await getUser();
+      } else userLogout();
     };
 
     autoLogin();
@@ -134,7 +128,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         error,
         loading,
         login,
-        token: token?.current,
       }}
     >
       {children}
