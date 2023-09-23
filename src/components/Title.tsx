@@ -5,9 +5,9 @@ const variants = tv({
   base: 'text-5xl font-[Grandstander] font-bold',
   variants: {
     size: {
-      sm: 'text-2xl',
-      md: 'text-4xl',
-      lg: 'text-7xl',
+      sm: 'text-4xl',
+      md: 'text-5xl',
+      lg: 'text-6xl',
     },
   },
 

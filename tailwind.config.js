@@ -5,7 +5,11 @@ import typography from '@tailwindcss/typography';
 export default {
   content: ['./src/**/*tsx'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'notes-bg': 'url("./public/image/notes.png")',
+      },
+    },
   },
   plugins: [typography],
 };

@@ -10,7 +10,7 @@ const variantsNavbar = tv({
       closedDropdown: [
         'absolute left-0 right-0 top-20 ',
         'py-8 px-[max(calc((100%-40rem)/2),1rem)]',
-        'bg-violet-400 dark:bg-violet-950',
+        'bg-violet-400 dark:bg-zinc-900',
         'flex justify-center flex-col gap-4',
         'border-black border-b-4',
         'transition-transform translate-x-full opacity-0',
@@ -18,7 +18,7 @@ const variantsNavbar = tv({
       openDropdown: [
         'absolute left-0 right-0 top-20 ',
         'py-8 px-[max(calc((100%-40rem)/2),1rem)]',
-        'bg-violet-400 dark:bg-violet-950',
+        'bg-violet-400 dark:bg-zinc-900',
         'flex justify-center flex-col gap-4',
         'border-black border-b-4',
         'transition-transform translate-x-0 opacity-1',

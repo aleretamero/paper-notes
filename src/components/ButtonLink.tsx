@@ -12,8 +12,10 @@ export function ButtonLink({ to, children, ...props }: IButtonProps) {
     <Link
       className="
         flex justify-center items-center
-        px-10 h-12 rounded-sm border-2 border-solid border-zinc-900
-        text-base font-bold leading-none text-zinc-900 bg-zinc-100
+        px-6 py-4
+        font['Roboto Flex'] text-sm font-bold leading-none uppercase
+        rounded-sm border-2 border-solid border-zinc-900
+        text-zinc-900 bg-zinc-100
         shadow-[4px_4px] shadow-black cursor-pointer
         active:shadow-none active:translate-x-[3px] active:translate-y-[3px]
         hover:bg-slate-50
