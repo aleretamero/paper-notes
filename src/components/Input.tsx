@@ -21,12 +21,7 @@ export const Input = ({
   ...props
 }: IInputProps): JSX.Element => {
   return (
-    <div
-      className={
-        'w-full relative flex justify-center items-start flex-col gap-2'
-      }
-    >
-      <label htmlFor={name}>{label}</label>
+    <div className={'w-full relative'}>
       <input
         id={name}
         name={name}
@@ -36,17 +31,20 @@ export const Input = ({
         onBlur={validate}
         placeholder={label}
         className="
-          w-full relative -bottom-6 bg-slate-200
-          items-center flex-col gap
-          border-zinc-900 border-solid border-2
-          shadow-[4px_4px] shadow-zinc-900
-          text-base font-bold text-zinc-900
-          py-1 px-2 outline-none
-          placeholder:text-zinc-500 opacity-80  
+          w-full bg-zinc-300
+          border-black border-2 p-4
+          shadow-[4px_4px] shadow-black
+          text-lg font-bold text-zinc-900
+          font['Roboto Flex'] outline-none
+          placeholder:text-zinc-500
         "
         {...props}
       />
-      {error && <p className="absolute left-0 -bottom-6">{error}</p>}
+      {error && (
+        <p className="absolute left-0 -bottom-9 text-base text-red-500 font-bold">
+          {error}
+        </p>
+      )}
     </div>
   );
 };

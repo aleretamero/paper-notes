@@ -7,7 +7,7 @@ import { password } from '../helpers/regex/password';
 const typesValidate = {
   name: {
     schema: z.string().min(3),
-    message: 'Username deve ter pelo menos 3 caracteres!',
+    message: 'Nome inválido',
   },
 
   email: {
@@ -17,8 +17,7 @@ const typesValidate = {
 
   password: {
     schema: z.string().regex(password),
-    message:
-      'Senha deve ter pelo menos 8 caracteres, maiúscula, minúscula, número e símbolo!',
+    message: 'Digite uma senha forte',
   },
 };
 
