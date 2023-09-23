@@ -26,20 +26,13 @@ export const Login = () => {
   };
 
   return (
-    <LayoutSection className="bg-[var(--primary-light)]">
-      <div
-        className="
-          flex justify-center items-center gap-8 flex-col
-          w-full [&_button]:mt-4
-        "
-      >
-        <Title>Entrar</Title>
-        <Form onSubmit={handleSubmit}>
-          <Input name="email" label="email" type="text" {...email} />
-          <Input name="password" label="password" type="text" {...password} />
-          <Button>Entrar</Button>
-        </Form>
-      </div>
+    <LayoutSection className="bg-violet-400 dark:bg-violet-950 py-8">
+      <Title className="text-zinc-900 dark:text-zinc-100">Entrar</Title>
+      <Form onSubmit={handleSubmit}>
+        <Input name="email" label="email" type="text" {...email} />
+        <Input name="password" label="password" type="text" {...password} />
+        <Button>Entrar</Button>
+      </Form>
     </LayoutSection>
   );
 };
