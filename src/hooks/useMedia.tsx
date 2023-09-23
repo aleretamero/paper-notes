@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-export const useMedia = (media: string) => {
+export const useMedia = (media?: string) => {
   const [match, setMatch] = useState<boolean | null>(null);
 
   useEffect(() => {
     const changeMatch = () => {
-      const { matches } = matchMedia(media);
+      const { matches } = matchMedia(media ?? '(max-width: 48rem)');
       setMatch(matches);
     };
 

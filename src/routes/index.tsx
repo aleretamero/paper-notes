@@ -1,14 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Layout } from '../layouts/Layout';
+import { LayoutDefault } from '../layouts/LayoutDefault';
 
-import { Home, Register, Login, Notes, Users } from '../pages';
+import { Register, Login, Notes, Home } from '../pages';
+import { NewSidebar } from '../components/NewSidebar';
 import { PrivateRouter } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <LayoutDefault />,
     children: [
       {
         index: true,
@@ -27,8 +28,8 @@ export const router = createBrowserRouter([
         element: <PrivateRouter element={<Notes />} />,
       },
       {
-        path: 'users',
-        element: <PrivateRouter element={<Users />} />,
+        path: '/users',
+        element: <PrivateRouter element={<NewSidebar />} />,
       },
     ],
   },

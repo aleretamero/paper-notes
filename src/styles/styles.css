@@ -31,7 +31,7 @@ html {
   opacity: 0;
   animation: anime-opacity 0.4s forwards;
 }
-
+/*
 .tiptap {
   overflow-y: auto;
   width: 100%;
@@ -43,7 +43,7 @@ html {
   display: flex;
   flex-direction: column;
 }
-
+*/
 @keyframes anime-opacity {
   to {
     opacity: 1;

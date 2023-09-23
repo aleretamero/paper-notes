@@ -1,12 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { UserProvider } from '../contexts/UserContext';
+import { SidebarProvider } from '../contexts/SidebarContext';
 
-export const Layout = () => {
+export const LayoutDefault = () => {
   return (
     <UserProvider>
-      <Header />
-      <Outlet />
+      <SidebarProvider>
+        <Header />
+        <Outlet />
+      </SidebarProvider>
     </UserProvider>
   );
 };
