@@ -14,7 +14,8 @@ export const MenuEditingBar = ({ editor }: IMenuEditingBarProps) => {
     <div
       className="
         w-full bg-zinc-900 p-2
-        flex flex-wrap items-center gap-2
+        flex flex-wrap items-center gap-4
+        border-b-4 border-black
       "
     >
       {items.map((item, index) => (

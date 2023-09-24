@@ -38,10 +38,10 @@ export const MenuEditing = () => {
       {editor && <MenuEditingBar editor={editor} />}
       <EditorContent
         editor={editor}
-        className="prose bg-slate-50
-          overflow-y-auto w-full h-full
-          border-none outline-none p-6 flex-1
-          [type='checkbox']
+        className="
+          overflow-y-hidden w-full h-full
+          border-none outline-none
+          prose prose-stone max-w-none
         "
       />
     </main>
