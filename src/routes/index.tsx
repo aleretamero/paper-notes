@@ -1,8 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { LayoutDefault } from '../layouts/LayoutDefault';
 
-import { Register, Login, Notes, Home } from '../pages';
-import { NewSidebar } from '../components/NewSidebar';
+import { Register, Login, Notes, Home, Users } from '../pages';
 import { PrivateRouter } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
 
@@ -29,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/users',
-        element: <PrivateRouter element={<NewSidebar />} />,
+        element: <PrivateRouter element={<Users />} />,
       },
     ],
   },
