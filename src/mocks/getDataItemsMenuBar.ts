@@ -19,12 +19,12 @@ export const getDataItemsMenuBar = (editor: Editor) => [
     action: () => editor.chain().focus().toggleStrike().run(),
     isActive: () => editor.isActive('strike'),
   },
-  {
-    icon: 'code-view',
-    title: 'Code',
-    action: () => editor.chain().focus().toggleCode().run(),
-    isActive: () => editor.isActive('code'),
-  },
+  // {
+  //   icon: 'code-view',
+  //   title: 'Code',
+  //   action: () => editor.chain().focus().toggleCode().run(),
+  //   isActive: () => editor.isActive('code'),
+  // },
   {
     icon: 'mark-pen-line',
     title: 'Highlight',
@@ -62,12 +62,12 @@ export const getDataItemsMenuBar = (editor: Editor) => [
     action: () => editor.chain().focus().toggleOrderedList().run(),
     isActive: () => editor.isActive('orderedList'),
   },
-  {
-    icon: 'list-check-2',
-    title: 'Task List',
-    action: () => editor.chain().focus().toggleTaskList().run(),
-    isActive: () => editor.isActive('taskList'),
-  },
+  // {
+  //   icon: 'list-check-2',
+  //   title: 'Task List',
+  //   action: () => editor.chain().focus().toggleTaskList().run(),
+  //   isActive: () => editor.isActive('taskList'),
+  // },
   {
     icon: 'code-box-line',
     title: 'Code Block',
@@ -97,7 +97,6 @@ export const getDataItemsMenuBar = (editor: Editor) => [
     title: 'Limpar formatação',
     action: () => editor.chain().focus().clearNodes().unsetAllMarks().run(),
   },
-
   {
     icon: 'arrow-go-back-line',
     title: 'Undo',

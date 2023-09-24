@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'notes-bg': 'url("./public/image/notes.png")',
+        'notes-bg': 'url("/images/notes.png")',
       },
     },
   },
